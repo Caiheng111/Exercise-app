@@ -1,10 +1,11 @@
 
 
-import React from 'react'
-import {Grid} from '@material-ui/core';
-import LeftPane from './LeftPane'
-import RightPane from './RightPane'
+import React,{Fragment} from 'react'
+import {Grid,Paper,Typography,List} from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
+ 
 const style ={
   Paper:{
     padding:20,
@@ -14,15 +15,32 @@ const style ={
   }
 }
 
+ const Exercises = ({exercises}) => {
+   
 
- const Exercises = () => {
   return (
     <Grid container >
       <Grid item sm>
-        <LeftPane style={style}/>
+       <Paper style={style.Paper}>
+          {exercises.map(([group, exercises])=>
+          <Fragment>
+              <Typography variant="subtitle1"  style={{textTransform:'capitalize'}}>
+                  {group}
+              </Typography>
+              <List component="nav" aria-label="secondary mailbox folders">
+              <ListItem button>
+                <ListItemText primary="Trash" />
+                
+              </ListItem>
+            </List>
+          </Fragment>
+          )}
+       </Paper>
       </Grid>
       <Grid item sm>
-        <RightPane style={style}/>
+        <Paper style={style.Paper}>
+        left Panel
+       </Paper>
       </Grid>
 
 
