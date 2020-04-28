@@ -28,6 +28,16 @@ export default class App extends Component {
     )
   }
 
+  // getExercisesByMuscles2(){
+  //   const groupItem =exercises.forEach(exerciseObj=>{
+  //      return  exerciseObj.muscles
+  //   })
+  //   return groupItem
+  
+  // }
+
+
+
   render() {
     // console.log(this.getExercisesByMuscles())
     
@@ -35,7 +45,7 @@ export default class App extends Component {
 
       <Fragment>
         <Header/>
-        <Exercises  exercises={this.getExercisesByMuscles()}/>
+        <Exercises  exercisesGroup={this.getExercisesByMuscles()}/>
         <Footer muscles={muscles}/>
      </Fragment>
     )
