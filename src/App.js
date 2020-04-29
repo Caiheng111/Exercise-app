@@ -10,7 +10,8 @@ export default class App extends Component {
     super(props)
   
     this.state = {
-      exercises   
+      exercises,
+      // category:''   
     }
   }
  
@@ -28,20 +29,33 @@ export default class App extends Component {
     )
   }
 
+  handleCategorySelected= category =>{
+    this.setState({
+      category
+    })
+  }
+
   
+
+
   render() {
     const exercises = this.getExercisesByMuscles();
-    // console.log(typeof(this.getExercisesByMuscles()))
+    // undefined category
+    const {category} =this.state 
     // console.log(this.getExercisesByMuscles())
     
     return (
-      
-
+    
       <Fragment>
         <Header/>
-        <Exercises  exercises={exercises}/>
-        {/* {console.log(exercises)} */}
-        <Footer muscles={muscles}/>
+        <Exercises  
+        exercises={exercises}
+        category={category}
+        onSelected={this.handleExerciseSelected}/>
+        <Footer 
+        category={category}
+        muscles={muscles} 
+        onselect={this.handleCategorySelected}/>
      </Fragment>
     )
   }
