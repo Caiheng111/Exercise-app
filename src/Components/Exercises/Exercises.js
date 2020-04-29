@@ -4,7 +4,7 @@ import React,{Fragment} from 'react'
 import {Grid,Paper,Typography,List} from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { exercises } from '../../store';
+
 
  
 const style ={
@@ -16,26 +16,28 @@ const style ={
   }
 }
 
- const Exercises = ({exercisesGroup}) => {
-   console.log(exercisesGroup);
+ const Exercises = ({exercises}) => {
    
+
   return (
     <Grid container >
       <Grid item sm>
-       {/* <Paper style={style.Paper}>
-          {exercisesGroup.map((group)=>
+       <Paper style={style.Paper}>
+          {exercises.map(([group, exercises])=>
           <Fragment>
-            <Typography variant="h5"  style={{textTransform:'capitalize'}}>
-                {group}
-            </Typography>
-            <List component="nav" aria-label="secondary mailbox folders">
-              <ListItem button>
-                <ListItemText primary="Trash" />
-              </ListItem>
-              </List>
+              <Typography variant="subtitle1"  style={{textTransform:'capitalize'}}>
+                  {group}
+              </Typography>
+              <List component="ul" >
+              {exercises.map((exercise)=>
+                  <ListItem button>
+                    <ListItemText primary={exercise.title} /> 
+                  </ListItem> 
+              )}  
+            </List>
           </Fragment>
           )}
-       </Paper> */}
+       </Paper>
       </Grid>
       <Grid item sm>
         <Paper style={style.Paper}>
